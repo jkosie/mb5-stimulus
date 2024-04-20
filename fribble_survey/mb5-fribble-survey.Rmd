@@ -146,7 +146,19 @@ appendage_and_bases %>%
   labs(x = "Entire Fribble (base + appendages)", y = "Average Rating") +
   facet_wrap(~item)
 
+```
+# Which bases would you select?
+```{r favorite bases}
 
+choice_sums <- choice_data %>% 
+  group_by(item) %>% 
+  summarise(n = n())
+
+choice_sums %>% 
+  ggplot(aes(x = reorder(item, -n), y = n, fill = item)) +
+  geom_bar(stat = "identity")  +
+  theme(legend.position = "none", axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  labs(x = "Base Name", y = "Number of Times Nominanted") #All were chosen at least once!
 
 
 ```
