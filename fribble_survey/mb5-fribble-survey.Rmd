@@ -74,14 +74,14 @@ base_data %>%
   ggplot(aes(x = reorder(item, -avg_rating), y = avg_rating, fill = item)) +
   geom_bar(stat = "identity") +
   theme(legend.position = "none", axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
-  labs(x = "Base Shape", y = "Average Rating")
+  labs(x = "Base Shape", y = "Rating")
 
 base_data %>% 
   ggplot(aes(x = item, y = rating, fill = item)) +
   geom_boxplot() +
   geom_point(aes(x = reorder(item, -avg_rating), y = rating), position=position_jitter(width =.15), size = 2, shape = 1) +
   theme(legend.position = "none", axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
-  labs(x = "Base Shape", y = "Average Rating")
+  labs(x = "Base Shape", y = "Rating")
 
 ```
 # Get average ratings for each appendage and plot.
@@ -93,7 +93,7 @@ appendage_data %>%
   ggplot(aes(x = appendage_number, y = avg_rating, fill = item)) +
   geom_bar(stat = "identity") +
   theme(legend.position = "none") +
-  labs(x = "Base Shape", y = "Average Rating") +
+  labs(x = "Base Shape", y = "Rating") +
   facet_wrap(~item)
 
 appendage_data %>% 
@@ -101,7 +101,7 @@ appendage_data %>%
   geom_boxplot() +
   geom_point(aes(x = appendage_number, y = rating), position=position_jitter(width =.15), size = 2, shape = 1) +
   theme(legend.position = "none") +
-  labs(x = "Base Shape", y = "Average Rating") +
+  labs(x = "Base Shape", y = "Rating") +
   facet_wrap(~item)
 
 ```
@@ -114,14 +114,14 @@ by_item_data %>%
   ggplot(aes(x = reorder(item, -avg_rating), y = avg_rating, fill = item)) +
   geom_bar(stat = "identity") +
   theme(legend.position = "none", axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
-  labs(x = "Entire Fribble (base + appendages)", y = "Average Rating")
+  labs(x = "Entire Fribble (base + appendages)", y = "Rating")
 
 by_item_data %>% 
   ggplot(aes(x = item, y = rating, fill = item)) +
   geom_boxplot() +
   geom_point(aes(x = item, y = rating), position=position_jitter(width =.15), size = 2, shape = 1) +
   theme(legend.position = "none", axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
-  labs(x = "Entire Fribble (base + appendages)", y = "Average Rating")
+  labs(x = "Entire Fribble (base + appendages)", y = "Rating")
 
 ```
 # Are there any where all components (e.g., base and appendages) are each individually rated high?
@@ -143,7 +143,7 @@ appendage_and_bases %>%
   geom_boxplot() +
   geom_point(aes(x = appendage_number, y = rating), position=position_jitter(width =.15), size = 2, shape = 1) +
   theme(legend.position = "none", axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
-  labs(x = "Entire Fribble (base + appendages)", y = "Average Rating") +
+  labs(x = "Base or Appendage Number", y = "Average Rating") +
   facet_wrap(~item)
 
 ```
