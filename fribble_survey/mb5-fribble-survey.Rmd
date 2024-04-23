@@ -161,8 +161,6 @@ choice_sums %>%
   labs(x = "Base Name", y = "Number of Times Nominanted") #All were chosen at least once!
 
 
-test
-
 
 ```
 
