@@ -11,7 +11,7 @@ library(here)
 
 ```
 # Read in and clean data
-```{r read in data}
+```{r read in data, echo = FALSE}
 survey_data_raw <- read_csv(here("data", "fribble_survey_data_4.19.24.csv"))
 
 #separate out base ratings and format long data file
@@ -66,7 +66,7 @@ by_item_data <- survey_data_raw %>%
 
 ```
 # Get average ratings for each base shape and plot.
-```{r bases}
+```{r bases, echo = FALSE}
 
 base_data %>% 
   group_by(item) %>% 
@@ -79,13 +79,13 @@ base_data %>%
 base_data %>% 
   ggplot(aes(x = item, y = rating, fill = item)) +
   geom_boxplot() +
-  geom_point(aes(x = reorder(item, -avg_rating), y = rating), position=position_jitter(width =.15), size = 2, shape = 1) +
+  geom_point(aes(x = item, y = rating), position=position_jitter(width =.15), size = 2, shape = 1) +
   theme(legend.position = "none", axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
   labs(x = "Base Shape", y = "Rating")
 
 ```
 # Get average ratings for each appendage and plot.
-```{r appendages}
+```{r appendages, echo = FALSE}
 
 appendage_data %>% 
   group_by(item, appendage_number) %>% 
@@ -106,7 +106,7 @@ appendage_data %>%
 
 ```
 # How are entire fribbles rated?
-```{r entire fribbles}
+```{r entire fribbles, echo = FALSE}
 
 by_item_data %>% 
   group_by(item) %>% 
@@ -125,7 +125,7 @@ by_item_data %>%
 
 ```
 # Are there any where all components (e.g., base and appendages) are each individually rated high?
-```{r all components separately}
+```{r all components separately, echo = FALSE}
 
 components <- appendage_and_bases %>% 
   group_by(item, appendage_number) %>% 
@@ -148,7 +148,7 @@ appendage_and_bases %>%
 
 ```
 # Which bases would you select?
-```{r favorite bases}
+```{r favorite bases, echo = FALSE}
 
 choice_sums <- choice_data %>% 
   group_by(item) %>% 
@@ -159,6 +159,9 @@ choice_sums %>%
   geom_bar(stat = "identity")  +
   theme(legend.position = "none", axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
   labs(x = "Base Name", y = "Number of Times Nominanted") #All were chosen at least once!
+
+
+test
 
 
 ```
